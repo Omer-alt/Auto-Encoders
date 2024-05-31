@@ -1,4 +1,6 @@
 # Imports
+import sys
+import os
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -8,27 +10,11 @@ import matplotlib.pyplot as plt
 from DeepLinearAutoencoder import DeepLinearAutoencoder
 from SimpleLinearAutoEncoder import LinearAutoencoder
 
+# Add parent directory to Python path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-# Loading data
-transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))])
-
-train_dataset = datasets.MNIST(root='./data', train=True, download=True, transform=transform)
-test_dataset = datasets.MNIST(root='./data', train=False, download=True, transform=transform)
-
-train_loader = torch.utils.data.DataLoader(
-    dataset=train_dataset, 
-    batch_size=64, shuffle=True,
-)
-
-test_loader = torch.utils.data.DataLoader(
-    dataset=test_dataset, 
-    batch_size=64, 
-    shuffle=False,
-)
-
-
-
-
+# Import train_loader and test_loader from the data module
+from utils.data import train_loader, test_loader
 
 
 def train(num_epochs, criterion, optimizer, model):
@@ -67,13 +53,20 @@ def reconstruct():
 
 if __name__ == "__main__":
     
-    # model = DeepLinearAutoencoder()
-    model = LinearAutoencoder()
-    
     criterion = nn.MSELoss()
-    optimizer = optim.Adam(model.parameters(), lr=1e-3)
-
     num_epochs = 10
+    
+    model = DeepLinearAutoencoder()
+    print('='*40,f'DEEP LINEAR AUTO-ENCODER','='*40)
+    optimizer = optim.Adam(model.parameters(), lr=1e-3)
+    
+    train(num_epochs, criterion, optimizer, model)
+    reconstruct()
+    
+    
+    print('='*40,f'LINEAR AUTO-ENCODER','='*40)
+    model = LinearAutoencoder()
+    optimizer = optim.Adam(model.parameters(), lr=1e-3)
     
     train(num_epochs, criterion, optimizer, model)
     reconstruct()
