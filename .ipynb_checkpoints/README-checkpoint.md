@@ -16,16 +16,10 @@ Simple Linear auto-encoder reconstruction of eigth MNIST images
 
 ## II. Denoising Auto-Encoders
 ## III. Contractive Auto-Encoders
-For the contractive autoencoder, we use as architecture of the encoder two fully connected layers with relu as activation function and 
 
 
-**Result:** 
 
-![Contractive_auto_encoder](./assets/Img_lambda=5.png)
-Contractive auto-encoder reconstruction of eigth MNIST images for lambda = 5
 
-![Contractive_auto_encoder](./assets/Img_lambda_very_small.png)
-Contractive auto-encoder reconstruction of eigth MNIST images for lambda = 1e-4
 
 ### Build With
 
