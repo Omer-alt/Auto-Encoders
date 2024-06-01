@@ -32,7 +32,7 @@ The decoder reconstructs the original image from the compressed representation u
 - **Output:** 1 channel (28 x 28)
 - **Result:** 
 ![Denoising_auto_encoder](./assets/denoising_0.8_out.png)
-Denoising auto-encoder reconstruction of eigth MNIST images
+Denoising auto-encoder reconstruction of six MNIST images
 
 ## III. Contractive Auto-Encoders
 For the contractive autoencoder, we use as architecture of the encoder two fully connected layers with relu as activation function and for the decoder, we use also two layers where the first layer has relu as activation function and the second has sigmoid as activation function.
