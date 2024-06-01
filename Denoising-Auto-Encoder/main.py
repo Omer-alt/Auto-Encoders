@@ -4,7 +4,7 @@ import torch.optim as optim
 import matplotlib.pyplot as plt
 from tqdm import trange
 from model import DenoisingAutoencoder
-from utils import add_random_dropout_noise
+from utils import add_gaussian_noise, add_salt_and_pepper_noise, add_random_dropout_noise
 from datasets import *
 
 

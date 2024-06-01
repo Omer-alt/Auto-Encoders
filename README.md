@@ -15,6 +15,25 @@ Deep Linear auto-encoder reconstruction of eigth MNIST images
 Simple Linear auto-encoder reconstruction of eigth MNIST images
 
 ## II. Denoising Auto-Encoders
+
+
+The detailed architecture of the denoising autoencoder is outlined as:
+
+### Encoder
+The encoder compresses the input image into a lower-dimensional representation using the following layers:
+- **Input:** 1 channel (28 x 28)
+- **Convolutional Layer:** 1 -> 16, kernel size: 3x3, stride: 2, padding: 1, activation: ReLU
+- **Convolutional Layer:** 16 -> 32, kernel size: 3x3, stride: 2, padding: 1, activation: ReLU
+
+### Decoder
+The decoder reconstructs the original image from the compressed representation using the following layers:
+- **Transposed Convolutional Layer:** 32 -> 16, kernel size: 2x2, stride: 2, activation: ReLU
+- **Transposed Convolutional Layer:** 16 -> 1, kernel size: 2x2, stride: 2, activation: Sigmoid (The Sigmoid activation function scales the output pixel values to the range [0, 1]).
+- **Output:** 1 channel (28 x 28)
+- **Result:** 
+![Denoising_auto_encoder](./assets/denoising_0.8_out.png)
+Denoising auto-encoder reconstruction of eigth MNIST images
+
 ## III. Contractive Auto-Encoders
 For the contractive autoencoder, we use as architecture of the encoder two fully connected layers with relu as activation function and for the decoder, we use also two layers where the first layer has relu as activation function and the second has sigmoid as activation function.
 The loss function of a Contractive Autoencoder typically consists of two main components: the reconstruction loss and the contractive penalty.
