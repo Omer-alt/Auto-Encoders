@@ -4,7 +4,7 @@ import torch.optim as optim
 import matplotlib.pyplot as plt
 from tqdm import trange
 from model import DenoisingAutoencoder
-from utils import *
+from utils import add_random_dropout_noise
 from datasets import *
 
 
@@ -16,15 +16,15 @@ learning_rate = 1e-3
 criterion = nn.MSELoss()
 optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
-num_epochs = 5
+num_epochs = 10
 # Training loop
-losses = []
+# losses = []
 for epoch in trange(num_epochs):
     model.train()
     for data in train_loader:
         img, _ = data
         img = img.to(device)
-        noisy_img = add_noise(img).to(device)
+        noisy_img = add_random_dropout_noise(img).to(device)
 
         # Forward pass
         outputs = model(noisy_img)
@@ -33,7 +33,7 @@ for epoch in trange(num_epochs):
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
-    losses.append(loss.cpu().numpy())
+    # losses.append(loss.cpu().numpy())
 
     print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {loss.item():.4f}')
 
@@ -44,7 +44,7 @@ with torch.no_grad():
     for data in test_loader:
         img, _ = data
         img = img.to(device)
-        noisy_img = add_noise(img).to(device)
+        noisy_img = add_random_dropout_noise(img).to(device)
         outputs = model(noisy_img)
 
 
