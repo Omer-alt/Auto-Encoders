@@ -69,6 +69,37 @@ Contractive auto-encoder reconstruction of eigth MNIST images for lambda = 1e-4
 **Package:** torchvision, matplotlib, Pytorch
 
 ### Run Locally
+
+Clone the project
+```bash
+    git clone https://github.com/Omer-alt/Auto-Encoders.git
+```
+
+Go to the project directory
+```bash
+    cd Auto-Encoders
+```
+
+To run linear auto-encoder
+```bash
+    cd Linear_Auto_encode
+    python3 linearAutoencoder.py
+
+```
+
+To run denoising auto-encoder
+```bash
+    cd Denoising-Auto-encoder
+    python3 main.py
+```
+
+To run contractive auto-encoder
+```bash
+    cd ContractiveAutoencoder
+    python3 ContractiveAutoencoder.py
+```
+
+Go to the project directory
 ### License
 
 [MIT](https://choosealicense.com/licenses/mit/)
